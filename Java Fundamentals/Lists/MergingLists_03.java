@@ -10,13 +10,14 @@ public class MergingLists_03 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        List<Integer> firstList = Arrays.stream(scanner.nextLine().split(" "))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
 
-        List<Integer> secondList = Arrays.stream(scanner.nextLine().split(" "))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+        List<Integer> firstList = Arrays.stream(scanner.nextLine().split("\\s+"))
+                .map(Integer::parseInt).collect(Collectors.toList());
+        List<Integer> secondList = Arrays.stream(scanner.nextLine().split("\\s+"))
+                .map(Integer::parseInt).collect(Collectors.toList());
+
+        List<Integer> resultList = new ArrayList<>();
+
 
         int size = Math.min(firstList.size(), secondList.size());
 
@@ -24,13 +25,14 @@ public class MergingLists_03 {
             System.out.print(firstList.get(i) + " " + secondList.get(i) + " ");
         }
 
-        printTheRest(firstList, size);
-        printTheRest(secondList, size);
+        printRest(firstList, size);
+        printRest(secondList, size);
     }
 
-    private static void printTheRest(List<Integer> numbers, int beginIndex){
+    private static void printRest(List<Integer> numbers, int beginIndex) {
         for (int i = beginIndex; i < numbers.size(); i++) {
-            System.out.print(numbers.get(i)+ " ");
+            System.out.print(numbers.get(i) + " ");
+
         }
     }
 }
